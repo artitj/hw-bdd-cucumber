@@ -4,8 +4,12 @@ Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
+    movie_to_add = Movie.new
+    movie_to_add.title = movie[:title]
+    movie_to_add.rating = movie[:rating]
+    movie_to_add.release_date = movie[:release_date]
+    movie_to_add.save!
   end
-  fail "Unimplemented"
 end
 
 # Make sure that one string (regexp) occurs before or after another one
