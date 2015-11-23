@@ -18,8 +18,10 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
-end
+  tmp1 = page.body =~ /#{e1}/
+  tmp2 = page.body =~ /#{e2}/
+  tmp1 < tmp2
+ end
 
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
